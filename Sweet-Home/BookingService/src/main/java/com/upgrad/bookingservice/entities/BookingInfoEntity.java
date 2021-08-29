@@ -1,6 +1,8 @@
 package com.upgrad.bookingservice.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -10,10 +12,10 @@ public class BookingInfoEntity {
     private int bookingId;
 
 @Column
-    private Date fromDate;
+    private LocalDate fromDate;
 
 @Column
-    private Date toDate;
+    private LocalDate toDate;
 
 @Column
     private String aadharNumber;
@@ -31,7 +33,22 @@ public class BookingInfoEntity {
     private int transactionId=0;
 
 @Column
-    private Date bookedOn;
+    private LocalDateTime bookedOn;
+
+    public BookingInfoEntity() {
+    }
+
+    public BookingInfoEntity(int bookingId, LocalDate fromDate, LocalDate toDate, String aadharNumber, int numOfRooms, String roomNumbers, int roomPrice, int transactionId, LocalDateTime bookedOn) {
+        this.bookingId = bookingId;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.aadharNumber = aadharNumber;
+        this.numOfRooms = numOfRooms;
+        this.roomNumbers = roomNumbers;
+        this.roomPrice = roomPrice;
+        this.transactionId = transactionId;
+        this.bookedOn = bookedOn;
+    }
 
     public int getBookingId() {
         return bookingId;
@@ -41,19 +58,19 @@ public class BookingInfoEntity {
         this.bookingId = bookingId;
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 
@@ -71,6 +88,10 @@ public class BookingInfoEntity {
 
     public void setNumOfRooms(int numOfRooms) {
         this.numOfRooms = numOfRooms;
+    }
+
+    public String getRoomNumbers() {
+        return roomNumbers;
     }
 
     public void setRoomNumbers(String roomNumbers) {
@@ -93,11 +114,11 @@ public class BookingInfoEntity {
         this.transactionId = transactionId;
     }
 
-    public Date getBookedOn() {
+    public LocalDateTime getBookedOn() {
         return bookedOn;
     }
 
-    public void setBookedOn(Date bookedOn) {
+    public void setBookedOn(LocalDateTime bookedOn) {
         this.bookedOn = bookedOn;
     }
 

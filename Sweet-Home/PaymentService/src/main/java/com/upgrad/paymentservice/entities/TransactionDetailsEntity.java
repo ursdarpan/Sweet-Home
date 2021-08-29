@@ -8,8 +8,8 @@ public class TransactionDetailsEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int transactionId;
 
-    @Column
-    private String paymentMode;
+    @Enumerated(EnumType.ORDINAL)
+    private PaymentMode paymentMode;
 
     @Column(nullable = false)
     private int bookingId;
@@ -23,12 +23,20 @@ public class TransactionDetailsEntity {
     public TransactionDetailsEntity() {
     }
 
-    public TransactionDetailsEntity(int transactionId, String paymentMode, int bookingId, String upiId, String cardNumber) {
+    public TransactionDetailsEntity(int transactionId, PaymentMode paymentMode, int bookingId, String upiId, String cardNumber) {
         this.transactionId = transactionId;
         this.paymentMode = paymentMode;
         this.bookingId = bookingId;
         this.upiId = upiId;
         this.cardNumber = cardNumber;
+    }
+
+    public PaymentMode getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(PaymentMode paymentMode) {
+        this.paymentMode = paymentMode;
     }
 
     @Override
@@ -48,14 +56,6 @@ public class TransactionDetailsEntity {
 
     public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public String getPaymentMode() {
-        return paymentMode;
-    }
-
-    public void setPaymentMode(String paymentMode) {
-        this.paymentMode = paymentMode;
     }
 
     public int getBookingId() {
